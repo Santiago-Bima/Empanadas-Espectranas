@@ -1,0 +1,265 @@
+*{
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	box-sizing: border-box;
+}
+body{
+	background:#c2b79896;
+	font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    height: 100%;
+}
+
+/* conf del titulo (Emp Espect) y subtitulo (menu, info) */
+.tit_sub_pag{
+    display: flex;
+    background-color: #EBB352;
+	height:  60px;
+	font-size: 20px;
+    align-content: center;
+    justify-content: center;
+    position: sticky;
+    z-index: 1000;
+}
+#titulo{
+	padding-top: 0px;
+	text-align: center;
+	color: #212529;
+    position: sticky;
+}
+.subtitulo_grande{
+    height: 30px;
+    background-color: #dda543;
+    position: sticky;
+}
+#subtitulo_g{
+    text-align: center;
+    color: #212529;
+    position: sticky;
+}
+
+
+/* configuracion del contenido del nav */
+.nav{
+    display:block;
+}
+.menu{
+    display:flex;
+    flex-direction: row;
+    justify-content: left;
+    align-content: center;
+    height: 60px;
+    background-color: #212529;
+    padding: 18px 0 0 120px;
+    position: relative;
+    z-index: 100; 
+}
+
+/* elementos decorativos del nav (barra divisoria, logo y el ham de menu) */
+#decor_nav{
+    display: inline;
+    position: relative;
+    top: -78px;
+    right: 120px;
+}
+.p_logo{
+    color: #fafafa;
+    width: auto;
+    height: auto;
+    display: inline;
+    position: absolute;
+    cursor:default;
+    left: 70px;
+    top: 79px;
+}
+.logo{
+    cursor:default;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 15px;
+    top: 65px;
+}
+.barra{
+    position: absolute;
+    cursor:default;
+    left: 106px;
+    top: 72px;
+    color: #ececec98;
+    font-size: 25px;
+}
+.ham{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 15px;
+    top: 72px;
+    background: none;
+    border: none;
+    color: #ececec;
+    font-size: 30px;
+    display: none;
+}
+
+/* opciones del nav (inicio, menu, info, etc) */
+.menu li{
+    display:inline;
+}
+.menu_items{
+    display: inline;
+    list-style: none;
+    flex-direction: row;
+}
+.menu_items a{
+    margin: 0 8px;
+    text-decoration: none;
+    color: #fafafa;
+    font-weight: 350;
+}
+.menu_items a:hover{
+    color: #bc70da;
+}
+
+/* botones de buscar */
+.buscar{
+    display: inline;
+    position: absolute;
+    left: 950px;
+}
+.search{
+    position: absolute;
+    right: 0px;
+    width: 220px;
+    max-width: 1000px;
+    background: #2f3235;
+    color: #fff;
+    max-height: 50vh;
+    overflow-x: hidden;
+    border-radius: 0px 0px 10px 10px;
+}
+#box-search{
+    display: none;
+}
+.search ul li{
+    padding: 10px;
+    font-size: 14px;
+    display: block;
+}
+.search ul li a{
+    text-decoration: none;
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.me-2{
+    padding: 4px;
+    border: none;
+    border-radius: 2px;
+    width: 220px;
+}
+
+
+
+/* edicion de cinta de opciones + desarrollo */
+#contenedor-general{
+    min-height: calc(100% - 210px);
+}
+
+
+/* edicion de cinta de opciones */
+#lista_de_opciones{
+    position: absolute;
+    top: 120px;
+    left: -120px;
+    transition: transform .4s;
+    min-height: calc(100% - 180px);
+    width: 120px;
+    background: #353636;
+    border-bottom-right-radius: 7px;
+    text-align: left;
+}
+#lista_de_opciones.activado{
+    transform: translateX(120px);
+}
+.etiqueta_opciones{
+    left: -5px;
+    transition: transform .4s;
+    top: 120px;
+    background: #353636;
+    padding: 5px 8px 6px 15px;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    z-index: 100;
+}
+.etiqueta_opciones.activado{
+    transform: translateX(120px);
+}
+.etiqueta{
+    color: #cdd0d3;
+    transition: transform .3s;
+}
+.etiqueta.activado{
+    transform: rotate(180deg);
+}
+#lista_de_opciones{
+    display:flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+#lista_de_opciones a{
+    text-decoration: none;
+    color: #cdd0d3;
+    margin-left: 10px;
+    padding-left: 5px;
+}
+#lista_de_opciones a:hover{
+    color: #bc70da;
+}
+#lista_de_opciones li{
+    list-style: none;
+    margin: 5px 0;
+    padding: 0 0px 10px 0;
+}
+#lista_de_opciones li:first-child{
+    margin: 10px 0 5px 0;
+}
+#lista_de_opciones li:last-child{
+    margin-bottom: 10px;
+    border: none;
+}
+
+
+/* edicion */
+.eliminar{
+    background: red;  
+    padding: 5px 15px;
+    width: fit-content;
+    border-radius: 10px;
+    border: solid black;
+    right: -15px;
+    top: 0;
+    position: relative!important;
+}
+
+
+/* config del footer */
+.footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    height: 60px;
+    display: flex;
+    background-color: #dda543;
+    justify-content: space-evenly;
+}
+.footer div{
+    display: inline;
+    margin-top: 15px;
+}
+.footer p{
+    color: #212529;
+}

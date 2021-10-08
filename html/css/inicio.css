@@ -1,0 +1,134 @@
+
+
+/* menu y sus items */
+.menu_items button{
+    margin: 0 8px;
+}
+.menu_items button:hover{
+    color: #bc70da;
+}
+.menu_drop{
+    background: none;
+    border: none;
+    font-weight: lighter;
+    color: #ececec;
+}
+.menu_drop_js{
+    transition: transform .4s;
+}
+.menu_drop_js.activado{
+   transform: rotate(180deg);
+}
+.menu_items_drop{
+    background: #292c30;
+    position: absolute;
+    top: -170px;
+    transition: transform .4s;
+    left: 118px;
+    padding: 15px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    z-index: 10;
+}
+.menu_items_drop.activado{
+    transform: translateY(290px);
+}
+.menu__drop__items{
+    display: block;
+    text-decoration: none;
+    color: #ececec98;
+    text-align: center;
+    width: auto;
+    border-bottom: solid rgba(211, 211, 211, 0.253) 1px;
+}
+.sub__in{
+    color: #bc70da!important;
+    padding: 20px 0 15px 0;
+    font-weight: bold;
+}
+.menu_items_drop a:first-child{
+    padding-top: 0px;
+}
+.menu__prod{
+    padding: 5px 0;
+}
+
+
+
+
+/* carrito */
+#carrito{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    background: transparent;
+    border: none;
+    color:#ececec;
+    right: 275px;
+    top: 20px;
+}
+#carrito:hover{
+    color: #bc70da
+}
+.contenedor_carrito{
+    display: inline;
+    position: absolute;
+    top: 33px;
+    transition: transform .4s;
+    right: 190px;
+    background: #2f3235;
+    color: #f0f0f0bb;
+    padding: 10px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    z-index: 10;
+}
+.contenedor_carrito ul li{
+    list-style: none;
+}
+.contenedor_carrito.activado{
+    transform: translateY(85px);
+}
+#compra_carrito{
+    border-radius: 5px;
+    border: none;
+    padding: 3px;
+}
+
+
+
+.desarrollo{
+    width:100vw;
+    position: relative;
+}
+.desarrollo h1{
+    margin: 25px;
+    text-decoration: underline #bc70da;
+}
+.desarrollo h3{
+    margin: 55px 25px 15px 55px;
+    text-decoration: underline #292c30;
+}
+
+.productos{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    flex-wrap: wrap;
+}
+.producto{
+    display: inline;
+    margin: 20px;
+}
+.nombre{
+    text-decoration: underline #2f3235;
+    margin-bottom: -18px;
+}
+.desc{
+    margin-bottom: -10px;
+}
+
+.footer{
+    position: relative!important;
+    bottom: 0;
+}

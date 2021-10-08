@@ -1,0 +1,116 @@
+html{
+    height: 100vh;
+    width: 100vw;
+}
+body{
+    background-color: #212529e1!important;
+}
+
+/* edicion de desarrollo */
+.indice{
+    text-align: center;
+}
+.indice h1{
+    font-size: larger;
+    background: #212529a1;
+    border-bottom: #212529 solid;
+    color: #cdd0d3;
+    padding: 10px 0;
+}
+.indice li{
+    padding: 10px;
+    list-style: none;
+    margin: 10px;
+}
+.indice a{
+    text-decoration: none;
+    color: #cdd0d3b7;
+}
+
+
+
+/* Registro */
+#sub-indice{
+    text-align: center;
+    font-size: larger;
+    background: #212529a1;
+    border-bottom: #212529 solid;
+    color: #cdd0d3;
+    padding: 10px 0;
+}
+.volver{
+    float: right;
+    background: #cdd0d3;
+    color: #212529;
+    padding: 6px;
+    margin: 20px 50px 0 0;
+    text-decoration: none;
+    border-radius: 15px;
+}
+.ingresoRegistro{
+    position: absolute;
+    background: #cdd0d3;
+    color: #212529;
+    padding: 6px;
+    margin: 20px 50px 0 0;
+    text-decoration: none;
+    border-radius: 15px;
+    right: 0px;
+    top: 250px;
+}
+.form{
+    display: flex;
+    position: relative;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    left: 50px;
+    width: fit-content;
+    margin: auto;
+    flex-direction: column;
+}
+.form li{
+    list-style: none;
+    padding-top: 20px;
+}
+.form label{
+    color: #cdd0d3;
+}
+.form input{
+    height: 35px;
+    text-align: center;
+    background: #3b3e42;
+    border: none;
+    color: #cdd0d3;
+}
+.form button{
+    background: #cdd0d3;
+    color: #212529;
+    padding: 6px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+/* mensajes de error de registro */
+.alert{
+    background: #B3E6B8;
+    display:inline;
+    position: relative;
+    left: 0px;
+    padding: 10px;
+    bottom: -15px;
+
+}
+.alert-error{
+    background: #ff5b6b;
+    display:inline;
+    position: relative;
+    left: 0px;
+    padding: 10px;
+    bottom: -15px;
+    margin: 20px;
+}

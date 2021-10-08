@@ -1,0 +1,25 @@
+
+/* edicion del desarrollo */
+.desarrollo{
+    position: sticky;
+    z-index: -100;
+    margin: 10px;
+}
+.fotoSpectro{
+    display: inline;
+    width: 230px;
+    height: 180px;
+    margin: 0 15px 5px 0;
+    float: left;
+}
+.fotoLocal{
+    display: inline;
+    width: 230px;
+    height: 180px;
+    margin: 0 0 5px 15px;
+    float: right;
+}
+.local p, .local h3{
+    text-align: right;
+}
+

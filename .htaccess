@@ -1,0 +1,25 @@
+Options All -Indexes 
+RewriteEngine On
+RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?activo=$1
+
+# asegurando el archivo .htaccess 
+<files .htaccess>
+order allow,deny
+deny from all 
+</files>
+
+# denegar acceso a robots maliciosos, extractores de webs y navegadores offline
+#RewriteBase /
+#RewriteCond %(HTTP_USER_AGENT) ^Anarchie [OK]
+#RewriteCond %(HTTP_USER_AGENT) ^ASPSeek [OK]
+#RewriteCond %(HTTP_USER_AGENT) ^attach [OK]
+#RewriteCond %(HTTP_USER_AGENT) ^autoemailspider [OK]
+#RewriteCond %(HTTP_USER_AGENT) ^Xaldon\ WebSpider [OK]
+#RewriteCond %(HTTP_USER_AGENT) ^Xenu [OK]
+#RewriteCond %(HTTP_USER_AGENT) ^Zeus.*Webster [OK]
+#RewriteCond %(HTTP_USER_AGENT) ^Zeus
+#RewriteRule ^.* - [F,L]
+
+# HTID:18112941: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+php_value display_errors 1
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:18112941:
