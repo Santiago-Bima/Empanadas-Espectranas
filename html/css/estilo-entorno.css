@@ -238,6 +238,7 @@ body{
     background: red;  
     padding: 5px 15px;
     width: 50px;
+    cursor:pointer;
     border-radius: 10px;
     border: solid black;
     right: -15px;

@@ -161,6 +161,7 @@
                                 <td>
                                     <p class='precio'>Precio: $<?php echo $value["precio"]?></p>
                                 </td>
+                                <input type="submit" value="Agregar al carrito">
                             </form>
                         </tr>
                     </div>
