@@ -123,8 +123,8 @@ body{
 /* botones de buscar */
 .buscar{
     display: inline;
-    position: absolute;
-    left: 950px;
+    position: relative;
+    left: 730px;
 }
 .search{
     position: absolute;
@@ -237,7 +237,7 @@ body{
 .eliminar{
     background: red;  
     padding: 5px 15px;
-    width: fit-content;
+    width: 50px;
     border-radius: 10px;
     border: solid black;
     right: -15px;

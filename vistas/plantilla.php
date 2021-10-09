@@ -44,7 +44,7 @@
                                     <li>
                                         <form method="post" style="display:inline;">
                                             <input type="hidden" value="<?php echo $_SESSION['token']; ?>" name="elimReg">
-                                            <button type="submit"  class='eliminar'><i class="fas fa-user-times"></i></button>
+                                            <input type='button'  class='eliminar' onclick="if(confirm('Quieres eliminar este usuario?')){this.form.submit();}"><i class='fas fa-user-times' id='elimIcono' style='z-index: 10; position: relative; left: -17px;'></i>
                                             <?php
                                                 $eliminar= new ctrlForm();
                                                 $eliminar->ctrlElimReg();
