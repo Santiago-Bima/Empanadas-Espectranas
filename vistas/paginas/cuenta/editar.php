@@ -122,7 +122,7 @@
                     <script>
                         setTimeout(function () {
                             window.location = 'inicio';
-                        }, 1000)
+                        }, 1500)
                     </script>";
                     }else if($act=="error"){
                     echo '<script>

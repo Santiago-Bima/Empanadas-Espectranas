@@ -93,15 +93,19 @@
                 if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9 ]+$/', $_POST["actUser"]) && preg_match('/^[^0-9][a-zA-Z0-9]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["actEmail"])){
                     $_SESSION['email']=$_POST["actEmail"];
                     $_SESSION['usuario']=$_POST["actUser"];
-                    if($_POST["actPsw"]!=""){
-                        if(preg_match('/^[0-9a-zA-Z]+$/', $_POST["actPsw"])){
-                            $psw=crypt($_POST["actPsw"],'$2a$07$T3xT0P4rA3nCR1pT4rL4P6wd1$');
-                            $_SESSION['password']=$_POST['actPsw'];
+                    if(isset($_POST["actPsw"])){
+                        if($_POST["actPsw"]!=""){
+                            if(preg_match('/^[0-9a-zA-Z]+$/', $_POST["actPsw"])){
+                                $psw=crypt($_POST["actPsw"],'$2a$07$T3xT0P4rA3nCR1pT4rL4P6wd1$');
+                                $_SESSION['password']=$_POST['actPsw'];
+                            }else{
+                                $rta="error";
+                            }
                         }else{
-                            $rta="error";
-                        }
+                            $psw=crypt($_POST["actPsw"],'$2a$07$T3xT0P4rA3nCR1pT4rL4P6wd1$');
+                        }   
                     }else{
-                        $psw=crypt($_POST["actPsw"],'$2a$07$T3xT0P4rA3nCR1pT4rL4P6wd1$');
+                        $psw=crypt($_SESSION['password'],'$2a$07$T3xT0P4rA3nCR1pT4rL4P6wd1$');
                     }
                     $datos=array("token"=>$_SESSION["token"],"usuario"=>$_POST["actUser"], "email"=>$_POST["actEmail"], "password"=>$psw);
                     $rta=mdlForm::mdlActReg($tabla, $datos);
