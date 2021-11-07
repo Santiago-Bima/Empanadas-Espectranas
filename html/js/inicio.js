@@ -26,6 +26,83 @@ document.querySelectorAll(".menu__drop__texto").forEach(link=>{
     })
 })
 
+// vista productos
+var productos=document.querySelectorAll(".producto");
+var cierre=document.querySelectorAll(".cruz");
+
+// precio
+var precio=document.querySelectorAll(".precio");
+var cant=document.querySelectorAll(".cant");
+var precio_escondido=document.querySelectorAll(".precio_escondido");
+var a_carrito=document.querySelectorAll(".agregar_carrito");
+
+//carrito
+var lista=document.querySelector(".lista");
+var total=document.querySelector(".total");
+var total_e=document.querySelector("#total");
+
+for(let i=0; i<productos.length; i++){
+    productos[i].addEventListener("click", ()=>{
+        productos.forEach(producto=>{
+            producto.classList.remove("viendo");
+        })
+        productos[i].classList.toggle("viendo");
+
+        cant[i].addEventListener("change", ()=>{
+            cantidad=cant[i].value;
+            valorPrecio=precio_escondido[i].value;
+            total_producto=cantidad*valorPrecio;
+            precio[i].innerText='Precio: $'+total_producto;
+        })
+
+        a_carrito[i].addEventListener("click", (e)=>{
+            e.preventDefault();
+            totalActual=parseInt(total_e.value);
+            total_producto=parseInt(total_producto)
+            totalNuevo=totalActual+total_producto;
+            total_e.value=totalNuevo;
+            total.innerText='Total: $'+totalNuevo;
+            listaActual=lista.innerText;
+            
+            if(cantidad!=0){
+                document.querySelector("#compra_carrito").innerHTML=`<a style='color: #2f3235; text-decoration: none' href='https://www.paypal.com/signin'>Comprar</a>`
+                if(listaActual=="No ingresaste ningun producto"){
+                    listaActual='';
+                }
+                lista.innerText=listaActual+cantidad+'  '+productos[i].querySelector(".nombre").innerText+'\n';
+            }
+
+            cant[i].value='';
+            precio[i].innerText='Precio: $0'
+            cantidad=0;
+            total_producto=0;
+        })
+
+        window.onbeforeunload = function(e) {
+            total_e.value=0;
+            lista.innerText="";
+            cant[i].value='';
+            precio[i].innerText='Precio: $0'
+            total_producto=0;
+            cantidad=0;
+        };
+        
+    })
+    cierre.forEach(cruz=>{
+        cruz.addEventListener("click", ()=>{
+            productos.forEach(producto=>{
+                producto.classList.remove("viendo");
+                cant[i].value='';
+                precio[i].innerText='Precio: $0';
+                total_producto=0;
+                cantidad=0;
+            })
+        })
+    })
+}
+
+
+
 
 
 

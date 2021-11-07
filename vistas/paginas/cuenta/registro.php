@@ -22,6 +22,7 @@
         <ul class="menu_items">
             <li>
                 <a class="li_a_princ" href="inicio">Inicio</a>
+                <a class="li_a_princ" href="info">Info</a>
             </li>
             <li class="li_buscar">
                 <ul class="buscar">

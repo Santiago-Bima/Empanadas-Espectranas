@@ -1,14 +1,4 @@
 <?php
-	if(!isset($_SESSION["validar"])){
-		echo "<script>window.location='ingreso';</script>";
-		return;
-	}else{
-		if($_SESSION["validar"]!="ok"){
-			echo "<script>window.location='ingreso';</script>";
-			return;
-		}
-	}
-
 	if(isset($_GET["token"])){
         $item="token";
         $valor=$_GET["token"];

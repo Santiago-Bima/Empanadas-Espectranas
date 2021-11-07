@@ -13,9 +13,8 @@
                             move_uploaded_file($_FILES['regImg']['tmp_name'],$destinoImg.$nomImg);
 
                             $nomImg=preg_replace("/\s+/", "%20", $nomImg);
-                            $tabla='productos';
                             $datos=array('nombre'=>$_POST['regProd'], 'descripcion'=>$_POST['regDesc'], 'foto'=>$nomImg, 'precio'=>$_POST['regPrecio'], 'tipo'=>$_POST['tipos']);
-                            $rta=mdlFormProd::mdlRegProd($tabla, $datos);
+                            $rta=mdlFormProd::mdlRegProd($datos);
                             return $rta;
                         }else{
                             echo 'no se acepta el tipo de archivo';
@@ -33,8 +32,7 @@
             }
         }
         static public function ctrlSelectProd(){
-            $tabla='productos';
-            $rta=mdlFormProd::mdlSelectProd($tabla);
+            $rta=mdlFormProd::mdlSelectProd();
             return $rta;
         }
     }

@@ -71,9 +71,10 @@
     color: #bc70da
 }
 .contenedor_carrito{
+    height: 226px;
     display: inline;
     position: absolute;
-    top: 33px;
+    top: -108px;
     transition: transform .4s;
     right: 190px;
     background: #2f3235;
@@ -87,13 +88,21 @@
     list-style: none;
 }
 .contenedor_carrito.activado{
-    transform: translateY(85px);
+    transform: translateY(225px);
 }
 #compra_carrito{
     border-radius: 5px;
     border: none;
     padding: 3px;
 }
+.lista{
+    margin-top: 15px;
+    overflow-y: scroll;
+    height: 110px;
+    width: 190px;
+    word-wrap: normal;
+}
+
 
 
 
@@ -102,25 +111,68 @@
     position: relative;
 }
 .desarrollo h1{
-    margin: 25px;
+    margin: 65px 0 25px 0;
     text-decoration: underline #bc70da;
+    width: 100vw;
+    text-align: center;
 }
 .desarrollo h3{
-    margin: 55px 25px 15px 55px;
+    margin: 55px 0 20px 0;
     text-decoration: underline #292c30;
+    width: 100vw;
+    text-align: center;
 }
-
 .productos{
     display: flex;
-    flex-direction: row;
-    width: 100vw;
     flex-wrap: wrap;
+    width: auto;
+    margin: 0 50px;
+    justify-content: center;
+}
+.productos:last-child{
+    margin-bottom: 50px;
 }
 .producto{
     display: inline;
-    margin: 20px;
+    margin: 10px;
+}
+.detalles p, .detalles h4{
+    color: rgba(255, 255, 255, 0.753)
+}
+.producto .detalles{
+    display: none;
+}
+.producto.viendo .detalles{
+    display: inline;
+    position: fixed;
+    z-index: 1000;
+    top: 50px;
+    right: 35.8vw;
+    border-radius: 10px;
+    padding: 100px 40px;
+    background: #2f3235d8;
+    backdrop-filter: blur(5px);
+    text-align: center;
+}
+.producto~.cruz{
+    display: none
+}
+.producto.viendo~.cruz{
+    display: inline;
+    z-index: 1001;
+    padding: 10px 12px;
+    position: fixed;
+    top: 78px;
+    right: 38vw;
+    border: 1px solid #fff;
+    color: #ecececc7;
+    background: #2f3235dc;
+    border-radius: 10px;
+
 }
 .nombre{
+    width: 250px;
+    text-align: center;
     text-decoration: underline #2f3235;
     margin-bottom: -18px;
 }

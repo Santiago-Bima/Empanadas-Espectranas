@@ -66,7 +66,8 @@
                             <li><a href="inicio#bebidas">Bebidas</a></li>
                             <?php 
                                 foreach($tipos as $key=>$tipoProd): ?>
-                                    <li><a href=" inicio#<?php echo $tipoProd['tipos'] ?>"><?php echo $tipoProd["tipos"]; ?></a></li>
+                            <li><a href=" inicio#<?php echo $tipoProd['tipos'] ?>"><?php echo $tipoProd["tipos"]; ?></a>
+                            </li>
                             <?php endforeach;?>
                             <li><a href="info">Info</a></li>
                             <li><a href="#nosotros">Acerca de Nosotros</a></li>
@@ -75,7 +76,7 @@
                             <li><a href="ingreso">Ingreso</a></li>
                             <li><a href="registro">Registro</a></li>
                             <?php foreach($productos as $key=>$value):?>
-                                <li><a href="inicio#<?php echo $value['nombre'] ?>"><?php echo $value["nombre"]?></a></li>
+                            <li><a href="inicio#<?php echo $value['nombre'] ?>"><?php echo $value["nombre"]?></a></li>
                             <?php
                                 endforeach;
                             ?>
@@ -108,8 +109,12 @@
     <div class="contenedor_carrito">
         <ul>
             Lista de productos
+            <div class="lista">
+                No ingresaste ningun producto
+            </div>
             <li>
-                <p>total=</p>
+                <input type="hidden" name="total" value="0" id='total'>
+                <p class="total" style="margin-top: 15px;">Total: $0</p>
             </li>
             <li>
                 <button id="compra_carrito">Comprar</button>
@@ -143,28 +148,42 @@
                             if($value['tipo']==$tipoProd['tipos']): ?>
                     <div class='producto'>
                         <tr>
-                            <form action="" method="post">
-                                <td>
-                                    <h4 id="<?php echo $value['nombre'] ?>" class='nombre'><?php echo $value["nombre"]?>
-                                    </h4>
-                                </td>
-                                <br>
-                                <td>
-                                    <p class='desc'><?php echo $value["descripcion"]?></p>
-                                </td>
-                                <br>
-                                <td><?php echo '<img src="html/fotos/prods/'.$value["foto"].'" width="250px" height="150px">'?>
-                                </td>
-                                <br>
-                                <td><input type="number" min="1" class='precio' name="cant" autocomplete="off"
-                                        placeholder="cantidad"></td>
-                                <td>
-                                    <p class='precio'>Precio: $<?php echo $value["precio"]?></p>
-                                </td>
-                                <input type="submit" value="Agregar al carrito">
-                            </form>
+                            <td>
+                                <h4 id="<?php echo $value['nombre'] ?>" class='nombre'><?php echo $value["nombre"]?>
+                                </h4>
+                            </td>
+                            <br>
+                            <td><?php echo '<img src="html/fotos/prods/'.$value["foto"].'" width="250px" height="150px" style="margin-top: 8px">'?>
+                            </td>
+                            <br>
+                            <div class="detalles">
+                                <form action="" method="post">
+                                    <td>
+                                        <h4 id="<?php echo $value['nombre'] ?>" class='nombre'>
+                                            <?php echo $value["nombre"]?>
+                                        </h4>
+                                    </td>
+                                    <br>
+                                    <td><?php echo '<img src="html/fotos/prods/'.$value["foto"].'" width="250px" height="150px" style="margin-top: 8px">'?>
+                                    </td>
+                                    <br>
+                                    <td>
+                                        <p class='desc'><?php echo $value["descripcion"]?></p>
+                                    </td>
+                                    <br>
+                                    <td>
+                                        <input type="number" min="1" name="cant" autocomplete="off"    placeholder="cantidad" class='cant'>
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name="precio" class='precio_escondido' value="<?php echo $value["precio"]?>">
+                                        <p class='precio'>Precio: $0</p>
+                                    </td>
+                                    <input type="submit" value="Agregar al carrito" class="agregar_carrito">
+                                </form>
+                            </div>
                         </tr>
                     </div>
+                    <i class="cruz fas fa-times"></i>
                     <?php       endif;
                         endforeach;
                         echo '</div>';

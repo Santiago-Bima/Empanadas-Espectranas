@@ -2,8 +2,8 @@
     require_once 'conexion_sql.php';
 
     class mdlFormProd{
-        static public function mdlRegProd($tabla, $datos){
-            $stmt=conexion_sql::conectar()->prepare("INSERT INTO $tabla(nombre, descripcion, foto, precio, tipo) VALUES (:nombre, :descripcion, :foto, :precio, :tipo)");
+        static public function mdlRegProd($datos){
+            $stmt=conexion_sql::conectar()->prepare("INSERT INTO productos(nombre, descripcion, foto, precio, tipo) VALUES (:nombre, :descripcion, :foto, :precio, :tipo)");
             $stmt->bindParam(':nombre', $datos['nombre'], pdo::PARAM_STR);
             $stmt->bindParam(':descripcion', $datos['descripcion'], PDO::PARAM_STR);
             $stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
@@ -20,8 +20,8 @@
             $stmt=null;
         }
 
-        static public function mdlSelectProd($tabla){
-            $stmt=conexion_sql::conectar()->prepare("SELECT * FROM $tabla");
+        static public function mdlSelectProd(){
+            $stmt=conexion_sql::conectar()->prepare("SELECT * FROM productos");
             $stmt->execute();
             return $stmt->fetchAll(); 
         }
