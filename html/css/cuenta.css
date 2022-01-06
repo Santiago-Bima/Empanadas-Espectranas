@@ -39,13 +39,15 @@ body{
     padding: 10px 0;
 }
 .volver{
-    float: right;
+    position: absolute;
+    right: 30%;
     background: #cdd0d3;
     color: #212529;
     padding: 6px;
     margin: 20px 50px 0 0;
     text-decoration: none;
     border-radius: 15px;
+    z-index: 1000;
 }
 .ingresoRegistro{
     position: absolute;
@@ -55,8 +57,11 @@ body{
     margin: 20px 50px 0 0;
     text-decoration: none;
     border-radius: 15px;
-    right: 0px;
+    right: 28%;
     top: 250px;
+    z-index: 1000;
+    text-align: center;
+    min-width: 105px;
 }
 .form{
     display: flex;
@@ -64,8 +69,7 @@ body{
     align-content: center;
     justify-content: center;
     text-align: center;
-    left: 50px;
-    width: fit-content;
+    width: 100vw;
     margin: auto;
     flex-direction: column;
 }
@@ -113,4 +117,13 @@ body{
     padding: 10px;
     bottom: -15px;
     margin: 20px;
+}
+
+@media only screen and (min-width: 1440px){
+    .ingresoRegistro{
+        right: 39%;
+    }
+    .volver{
+        right: 40%;
+    }
 }

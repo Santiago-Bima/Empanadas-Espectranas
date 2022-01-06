@@ -9,15 +9,18 @@
             $stmt->bindParam(':usuario', $datos['usuario'], PDO::PARAM_STR);
             $stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
             $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
+            
+            $resultado="ok";
+            
+            try{
+                $stmt->execute();
+            }catch (Exception $e) {
+                $resultado="nook";
+            };
 
-            if($stmt->execute()){
-                return 'ok';
-            }else{
-                print_r(conexion_sql::conectar()->errorInfo());
-            }
+            unset($stmt);
+            return $resultado;
 
-            $stmt->close();
-            $stmt=null;
         }
 
         static public function mdlSelecReg($tabla, $item, $valor){
@@ -26,8 +29,6 @@
             $stmt->execute();
             return $stmt->fetch();
 
-            $stmt->close();
-            $stmt=null;
         }
 
         static public function mdlActReg($tabla, $datos){
@@ -36,37 +37,48 @@
             $stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
             $stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
             $stmt->bindParam(":token", $datos["token"], PDO::PARAM_STR);
-            if($stmt->execute()){
-                return "ok";
-            }else{
-                print_r(conexion_sql::conectar()->errorInfo());
-            }
-            $stmt->close();
-            $stmt=null;
+
+            $resultado="ok";
+            
+            try{
+                $stmt->execute();
+            }catch (Exception $e) {
+                $resultado="nook";
+            };
+
+            unset($stmt);
+            return $resultado;
         }
 
         static public function mdlElimReg($tabla, $valor){
             $stmt=conexion_sql::conectar()->prepare("DELETE FROM $tabla where token=:token");
             $stmt->bindParam(":token", $valor, PDO::PARAM_STR);
-            if($stmt->execute()){
-                return "ok";
-            }else{
-                print_r(conexion_sql::conectar()->errorInfo());
-            }
-            $stmt->close();
-            $stmt=null;
+            
+            $resultado="ok";
+            
+            try{
+                $stmt->execute();
+            }catch (Exception $e) {
+                $resultado="nook";
+            };
+
+            unset($stmt);
+            return $resultado;
         }
+        
         static public function mdlActIF($tabla, $valor, $token){
             $stmt=conexion_sql::conectar()->prepare("UPDATE $tabla SET intentos_fallidos=:intentos_fallidos WHERE token=:token");
             $stmt->bindParam(":intentos_fallidos", $valor, PDO::PARAM_INT);
             $stmt->bindParam(':token', $token, PDO::PARAM_STR);
-            if($stmt->execute()){
-                return 'ok';
-            }else{
-                print_r(conexion_sql::conectar()->errorInfo());
-            }
+            $resultado="ok";
+            
+            try{
+                $stmt->execute();
+            }catch (Exception $e) {
+                $resultado="nook";
+            };
 
-            $stmt->close();
-            $stmt=null;
+            unset($stmt);
+            return $resultado;
         }
     }

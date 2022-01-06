@@ -6,7 +6,7 @@
 		$usuario=ctrlForm::ctrlSelecReg($psw, $item, $valor);
 	}
 
-    $productos=ctrlFormProd::ctrlSelectProd();
+    $productos=ctrlFormProd::ctrlSelectProd(null, null);
     $stmt=conexion_sql::conectar()->prepare("SELECT * FROM tipos_de_productos");
 	$stmt->execute();
     $tipos=$stmt->fetchAll();

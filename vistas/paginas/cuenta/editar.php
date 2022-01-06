@@ -15,7 +15,7 @@
 		$psw=$_SESSION['password'];
 		$usuario=ctrlForm::ctrlSelecReg($psw, $item, $valor);
 	}
-    $productos=ctrlFormProd::ctrlSelectProd();
+    $productos=ctrlFormProd::ctrlSelectProd(null, null);
     $stmt=conexion_sql::conectar()->prepare("SELECT * FROM tipos_de_productos");
 	$stmt->execute();
     $tipos=$stmt->fetchAll();
@@ -133,7 +133,16 @@
                     echo "<div class='alert-error'>
                         Error al actualizar el usuario
                     </div>";
-                    }
+                    }else if($act=="nook"){
+                        echo '<script> 
+                                if(window.history.replaceState){
+                                    window.history.replaceState( null, null, window.location.href);
+                                }
+                            </script>';
+                        echo "<div class='alert-error'>
+                                Error, el mail de usuario ya existe
+                            </div>";                                                
+            }
                     ?>
                     <li>
                         <button type="submit" class='act'>Actualizar</button>

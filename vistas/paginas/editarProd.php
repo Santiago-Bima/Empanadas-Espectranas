@@ -8,7 +8,11 @@
 			return;
 		}
 	}
-	$productos=ctrlFormProd::ctrlSelectProd(null, null);
+    if(isset($_GET["id"])){
+        $item="id";
+        $valor=$_GET["id"];
+		$producto=ctrlFormProd::ctrlSelectProd($item, $valor);
+	}
     $stmt=conexion_sql::conectar()->prepare("SELECT * FROM tipos_de_productos");
 	$stmt->execute();
     $tipos=$stmt->fetchAll();
@@ -80,72 +84,72 @@
 				<li>
 					<label for="producto">Nombre del producto:</label>
 					<br>
-					<input type="text" id="producto" name="regProd" autocomplete="off">
+					<input type="text" id="producto" name="editProd" autocomplete="off"  value='<?php echo $producto['nombre'] ?>'>
 				</li>
 				<br>
 				<li>
 					<label for="desc">Descripción:</label>
 					<br>
-					<textarea id="desc" name="regDesc"></textarea>
+					<textarea id="desc" name="editDesc"><?php echo $producto['descripcion'] ?></textarea>
 				</li>
 				<br>
 				<li>
 					<label for="img" class="img">Imagen:</label>
 					<br>
-					<input type="file" id="img" name="regImg" accept="image/png, image/jpeg, image/jpg" size="20">
+					<input type="file" id="img" name="editImg" accept="image/png, image/jpeg, image/jpg" size="20">
 				</li>
 
 				<br>
 				<li>
 					<label for="precio">Precio:</label>
 					<br>
-					<input type="number" min="1" id="precio" class='precio' name="regPrecio" autocomplete="off"
-						title="">
+					<input type="number" min="1" id="precio" class='precio' name="editPrecio" autocomplete="off"
+						title="" value='<?php echo $producto['precio'] ?>'>
 				</li>
 				<li class='tipos'>
 					<select name='tipos'>
-						<option value=" ">Seleccione:</option>
+						<option value="<?php echo $producto['tipo'] ?>"><?php echo $producto['tipo'] ?></option>
 						<?php
 									$stmt=conexion_sql::conectar()->prepare("SELECT * FROM tipos_de_productos");
 									$stmt->execute();
             						$tipos=$stmt->fetchAll();
 									foreach ($tipos as $key=>$valores):
-										echo '<option value="'.$valores["tipos"].'">'.$valores["tipos"].'</option>';
+                                        if($valores['tipos']!=$producto['tipo']){
+                                            echo "<option value='".$valores['tipos']."'>".$valores['tipos']."</option>";
+                                        }
 									endforeach;
 							?>
 					</select>
 				</li>
 				<br>
 				<?php
-						$registro=ctrlFormProd::ctrlRegProd();
-						if($registro=='ok'){
+						$update=ctrlFormProd::ctrlEditProd($item, $valor);
+						if($update=='ok'){
 							echo '<script> 
 									if(window.history.replaceState){
 										window.history.replaceState( null, null, window.location.href);
 									}
 								</script>';
 							echo "<div class='alert'>
-								El producto se ingreso correctamente
-								<br>
-								recarge la página si quiere ingresar otro
+								El producto se actualizó correctamente
 							</div>";
-						}elseif($registro=="error"){
+						}elseif($update=="error"){
 							echo '<script> 
 									if(window.history.replaceState){
 										window.history.replaceState( null, null, window.location.href);
 									}
 								</script>';
 							echo "<div class='alert-error'>
-									Error, no pudo ingresarse el producto
+									Error, no pudo actualizarse  el producto
 								</div>";
 						}else{
 							echo "<div class='alert3'>"
-								.$registro."
+								.$update."
 								</div>";
 						}
 					?>
 				<li>
-					<button type="submit" value="Registrar">Registrar</button>
+					<button type="submit" value="Registrar">Editar</button>
 				</li>
 			</ul>
 		</form>

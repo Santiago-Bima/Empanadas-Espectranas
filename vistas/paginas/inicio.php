@@ -16,7 +16,7 @@
 		$usuario=ctrlForm::ctrlSelecReg($psw, $item, $valor);
 	}
 
-    $productos=ctrlFormProd::ctrlSelectProd();
+    $productos=ctrlFormProd::ctrlSelectProd(null, null);
     $stmt=conexion_sql::conectar()->prepare("SELECT * FROM tipos_de_productos");
 	$stmt->execute();
     $tipos=$stmt->fetchAll();
@@ -118,6 +118,7 @@
             </li>
             <li>
                 <button id="compra_carrito">Comprar</button>
+                <button id="borrar_carrito" style="position: relative; right: -80px">Borrar</button>
             </li>
         </ul>
     </div>
@@ -183,13 +184,29 @@
                             </div>
                         </tr>
                     </div>
+                    <?php
+                        if($_SESSION['password']=='Frijolito753'): ?>
+                            <a class='editProd' href="index.php?activo=editarprod&id=<?php echo $value['Id']; ?>"><i class=" far fa-edit"></i></a>
+                            <form method="post">
+                                <input type="hidden" value="<?php echo $value['Id'] ?>" name="elimProd">
+                                <input type="hidden" name="foto" value="<?php echo 'html/fotos/prods/'.$value['foto'] ?>">
+                                <input type='button'  class='elimProd' onclick="if(confirm('Quieres eliminar este producto?')){this.form.submit();}"><i class="elimProdIcon fas fa-times"></i>
+                                    <?php
+                                        $eliminar= new ctrlFormProd();
+                                        $eliminar->ctrlElimProd();
+                                    ?>
+                            </form>
+                    <?php 
+                        endif;
+                    ?>
                     <i class="cruz fas fa-times"></i>
+                    
                     <?php       endif;
                         endforeach;
                         echo '</div>';
                         $cont+=1;
                     endforeach; 
-                ?>
+                    ?>
                 </div>
         </section>
     </div>

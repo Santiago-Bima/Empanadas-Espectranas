@@ -246,7 +246,6 @@ body{
     position: relative!important;
 }
 
-
 /* config del footer */
 .footer{
     width: 100%;
@@ -263,4 +262,26 @@ body{
 }
 .footer p{
     color: #212529;
+}
+
+
+
+
+@media only screen and (min-width: 1440px){
+    .buscar{
+        display: inline;
+        position: relative;
+        left: 730px;
+    }
+    .search{
+        position: absolute;
+        right: 0px;
+        width: 220px;
+        max-width: 1000px;
+        background: #2f3235;
+        color: #fff;
+        max-height: 50vh;
+        overflow-x: hidden;
+        border-radius: 0px 0px 10px 10px;
+    }
 }

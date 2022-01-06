@@ -46,39 +46,45 @@
                 $valor=$_POST['ingEmail'];
 
                 $rta=mdlForm::mdlSelecReg($tabla, $item, $valor);
-                $encriptarPsw=crypt($_POST['ingPsw'], '$2a$07$T3xT0P4rA3nCR1pT4rL4P6wd1$');
-                if($rta['email']==$_POST['ingEmail'] && $rta['password']==$encriptarPsw){
-                    mdlForm::mdlActIF($tabla, 0, $rta['token']);
-                    $_SESSION['validar']='ok';
-                    $_SESSION['token']=$rta['token'];
-                    $_SESSION['email']=$rta['email'];
-                    $_SESSION['usuario']=$rta['usuario'];
-                    $_SESSION['password']=$_POST['ingPsw'];
-                    echo '<script> 
-					if(window.history.replaceState){
-						window.history.replaceState( null, null, window.location.href);
-					}
-                    window.location="inicio";
-					</script>';
-                }else{
-                    if($rta['intentos_fallidos']<3){
-                        $intentos_fallidos=$rta['intentos_fallidos']+1;
-                        mdlForm::mdlActIF($tabla, $intentos_fallidos, $rta['token']);
+                if($rta){
+                    $encriptarPsw=crypt($_POST['ingPsw'], '$2a$07$T3xT0P4rA3nCR1pT4rL4P6wd1$');
+                    if($rta['email']==$_POST['ingEmail'] && $rta['password']==$encriptarPsw){
+                        mdlForm::mdlActIF($tabla, 0, $rta['token']);
+                        $_SESSION['validar']='ok';
+                        $_SESSION['token']=$rta['token'];
+                        $_SESSION['email']=$rta['email'];
+                        $_SESSION['usuario']=$rta['usuario'];
+                        $_SESSION['password']=$_POST['ingPsw'];
+                        echo '<script> 
+                        if(window.history.replaceState){
+                            window.history.replaceState( null, null, window.location.href);
+                        }
+                        window.location="inicio";
+                        </script>';
                     }else{
+                        if($rta['intentos_fallidos']<3){
+                            $intentos_fallidos=$rta['intentos_fallidos']+1;
+                            mdlForm::mdlActIF($tabla, $intentos_fallidos, $rta['token']);
+                        }else{
+                            echo "<div class='alert-error'>
+                                RECAPCHA Debes validar que no eres un robot
+                            </div>
+                            <br>
+                            <br>";
+                        }
+                        echo '<script> 
+                        if(window.history.replaceState){
+                            window.history.replaceState( null, null, window.location.href);
+                        }
+                        </script>';
                         echo "<div class='alert-error'>
-							RECAPCHA Debes validar que no eres un robot
-						</div>
-                        <br>
-                        <br>";
+                                Los datos han sido ingresado incorrectamente
+                            </div>";
                     }
-                    echo '<script> 
-					if(window.history.replaceState){
-						window.history.replaceState( null, null, window.location.href);
-					}
-					</script>';
-					echo "<div class='alert-error'>
-							Los datos han sido ingresado incorrectamente
-						</div>";
+                }else{
+                    echo "<div class='alert-error'>
+                                No se encontro ningun usuario
+                            </div>";
                 }
             }
         }

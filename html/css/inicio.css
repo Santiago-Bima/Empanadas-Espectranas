@@ -90,7 +90,7 @@
 .contenedor_carrito.activado{
     transform: translateY(225px);
 }
-#compra_carrito{
+#compra_carrito, #borrar_carrito{
     border-radius: 5px;
     border: none;
     padding: 3px;
@@ -154,22 +154,54 @@
     backdrop-filter: blur(5px);
     text-align: center;
 }
-.producto~.cruz{
-    display: none
+.cruz, .editProd, .elimProd, .elimProdIcon{
+    display: none!important;
 }
-.producto.viendo~.cruz{
-    display: inline;
-    z-index: 1001;
+.producto.viendo~.cruz.viendo{
     padding: 10px 12px;
-    position: fixed;
-    top: 78px;
     right: 38vw;
     border: 1px solid #fff;
-    color: #ecececc7;
     background: #2f3235dc;
+    display: inline!important;
+    z-index: 1001;
+    position: fixed;
+    top: 75px;
+    color: #ecececc7;
     border-radius: 10px;
-
 }
+.producto.viendo~.editProd.viendo{
+    padding: 10px 10px 10px 12px;
+    right: 56.8vw;
+    background: #f0a038dc;
+    display: inline!important;
+    z-index: 1001;
+    position: fixed;
+    top: 78px;
+    color: #ecececc7;
+    border-radius: 10px;
+}
+.producto.viendo~form .elimProd.viendo,
+.producto.viendo~form .elimProdIcon.viendo{
+    display: inline!important;
+    z-index: 1001;
+    position: fixed;
+}
+
+.producto.viendo~form .elimProd.viendo{
+    padding: 13px 20px;
+    background: #df5454dc;
+    border-radius: 10px;
+    border: none;
+    right: 53vw;
+    top: 77px;
+}
+
+.producto.viendo~form .elimProdIcon.viendo{
+    right: 54.15vw;
+    top: 90px;
+    color: #ecececc7;
+}
+
 .nombre{
     width: 250px;
     text-align: center;

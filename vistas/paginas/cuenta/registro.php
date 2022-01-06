@@ -1,5 +1,5 @@
 <?php
-    $productos=ctrlFormProd::ctrlSelectProd();
+    $productos=ctrlFormProd::ctrlSelectProd(null, null);
     $stmt=conexion_sql::conectar()->prepare("SELECT * FROM tipos_de_productos");
 	$stmt->execute();
     $tipos=$stmt->fetchAll();
@@ -100,8 +100,7 @@
                                                     }
                                                     window.location="inicio";
                                                 </script>';
-                                        }
-                                        if($registro=="error"){
+                                        }elseif($registro=="error"){
                                             echo '<script> 
                                                     if(window.history.replaceState){
                                                         window.history.replaceState( null, null, window.location.href);
@@ -110,6 +109,15 @@
                                             echo "<div class='alert-error'>
                                                     Error, esta mal ingresado el usuario
                                                 </div>";
+                                        }elseif($registro=="nook"){
+                                                    echo '<script> 
+                                                            if(window.history.replaceState){
+                                                                window.history.replaceState( null, null, window.location.href);
+                                                            }
+                                                        </script>';
+                                                    echo "<div class='alert-error'>
+                                                            Error, el mail de usuario ya existe
+                                                        </div>";                                                
                                         }
                                     ?>
                             <li class="button li-form">

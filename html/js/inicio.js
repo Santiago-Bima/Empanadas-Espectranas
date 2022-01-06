@@ -29,6 +29,9 @@ document.querySelectorAll(".menu__drop__texto").forEach(link=>{
 // vista productos
 var productos=document.querySelectorAll(".producto");
 var cierre=document.querySelectorAll(".cruz");
+var editar=document.querySelectorAll(".editProd");
+var eliminar=document.querySelectorAll(".elimProd");
+var elimIcono=document.querySelectorAll(".elimProdIcon");
 
 // precio
 var precio=document.querySelectorAll(".precio");
@@ -40,13 +43,30 @@ var a_carrito=document.querySelectorAll(".agregar_carrito");
 var lista=document.querySelector(".lista");
 var total=document.querySelector(".total");
 var total_e=document.querySelector("#total");
+var borrarLista=document.querySelector("#borrar_carrito");
 
 for(let i=0; i<productos.length; i++){
     productos[i].addEventListener("click", ()=>{
         productos.forEach(producto=>{
             producto.classList.remove("viendo");
         })
+        cierre.forEach(cruz=>{
+            cruz.classList.remove('viendo');
+        })
+        editar.forEach(edit=>{
+            edit.classList.remove('viendo');
+        })
+        eliminar.forEach(elim=>{
+            elim.classList.remove('viendo');
+        })
+        elimIcono.forEach(icon=>{
+            icon.classList.remove('viendo');
+        })
         productos[i].classList.toggle("viendo");
+        cierre[i].classList.toggle("viendo");
+        editar[i].classList.toggle("viendo");
+        eliminar[i].classList.toggle("viendo");
+        elimIcono[i].classList.toggle("viendo");
 
         cant[i].addEventListener("change", ()=>{
             cantidad=cant[i].value;
@@ -101,6 +121,14 @@ for(let i=0; i<productos.length; i++){
     })
 }
 
+
+borrarLista.addEventListener("click", ()=>{
+    total.innerText='Total: $0';
+    total_e.value=0;
+    lista.innerText="No ingresaste ningun producto";
+    total_producto=0;
+    cantidad=0;
+})
 
 
 
