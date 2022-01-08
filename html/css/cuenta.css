@@ -127,3 +127,7 @@ body{
         right: 40%;
     }
 }
+
+.prop_inicio{
+    display: none;
+}

@@ -5,3 +5,6 @@ html{
 body{
     background-color: #212529e1!important;
 }
+.prop_inicio{
+    display: none;
+}

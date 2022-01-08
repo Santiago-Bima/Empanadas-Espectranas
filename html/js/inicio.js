@@ -26,6 +26,8 @@ document.querySelectorAll(".menu__drop__texto").forEach(link=>{
     })
 })
 
+
+
 // vista productos
 var productos=document.querySelectorAll(".producto");
 var cierre=document.querySelectorAll(".cruz");
@@ -140,4 +142,12 @@ var cont_carrito=document.querySelector(".contenedor_carrito");
 carrito.addEventListener('click', ()=>{
     carrito.classList.toggle("activado");
     cont_carrito.classList.toggle("activado");
+})
+
+
+var ham_carrito=document.querySelector("#ham_carrito");
+var ham_cont_carrito=document.querySelector(".ham_contenedor_carrito");
+ham_carrito.addEventListener('click', ()=>{
+    ham_carrito.classList.toggle("activado");
+    ham_cont_carrito.classList.toggle("activado");
 })

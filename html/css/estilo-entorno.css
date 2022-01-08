@@ -9,6 +9,9 @@ body{
 	font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     height: 100%;
 }
+html{
+    box-sizing: content-box!important;
+}
 
 /* conf del titulo (Emp Espect) y subtitulo (menu, info) */
 .tit_sub_pag{
@@ -55,6 +58,7 @@ body{
     z-index: 100; 
 }
 
+
 /* elementos decorativos del nav (barra divisoria, logo y el ham de menu) */
 #decor_nav{
     display: inline;
@@ -88,18 +92,6 @@ body{
     color: #ececec98;
     font-size: 25px;
 }
-.ham{
-    height: 40px;
-    width: 40px;
-    position: absolute;
-    right: 15px;
-    top: 72px;
-    background: none;
-    border: none;
-    color: #ececec;
-    font-size: 30px;
-    display: none;
-}
 
 /* opciones del nav (inicio, menu, info, etc) */
 .menu li{
@@ -119,12 +111,57 @@ body{
 .menu_items a:hover{
     color: #bc70da;
 }
+.ham{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 15px;
+    top: 72px;
+    background: none;
+    border: none;
+    color: #ececec;
+    font-size: 30px;
+    display: none;
+    transition: transform .4s;
+}
+.ham.activado{
+    transform: rotate(90deg);
+}
+.ham_options.activado{
+    transform: translateY(170px);
+}
+.ham_options{
+    display: none;
+    background: #282b2e;
+    text-align: center;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    top: -50px;
+    z-index: 10;
+    transition: transform .4s;
+}
+.ham_options li{
+    list-style: none;
+    padding: 15px 0;
+}
+.ham_options li:last-child{
+    padding-bottom: 25px;
+}
+.ham_options li a{
+    text-decoration: none;
+    color: #fafafa;
+    font-weight: 350;
+}
 
 /* botones de buscar */
 .buscar{
-    display: inline;
-    position: relative;
-    left: 730px;
+    position: absolute;
+    right: 50px;
+    top: 20px;
+}
+.ham_menu{
+    display: none;
 }
 .search{
     position: absolute;
@@ -146,6 +183,7 @@ body{
     display: block;
 }
 .search ul li a{
+    color: #ececec;
     text-decoration: none;
     display: block;
     margin: 0;
@@ -242,7 +280,7 @@ body{
     border-radius: 10px;
     border: solid black;
     right: -15px;
-    top: 0;
+    top: 8px;
     position: relative!important;
 }
 
@@ -267,12 +305,7 @@ body{
 
 
 
-@media only screen and (min-width: 1440px){
-    .buscar{
-        display: inline;
-        position: relative;
-        left: 730px;
-    }
+@media (min-width: 1440px){
     .search{
         position: absolute;
         right: 0px;
@@ -283,5 +316,63 @@ body{
         max-height: 50vh;
         overflow-x: hidden;
         border-radius: 0px 0px 10px 10px;
+    }
+}
+
+@media (max-width: 731px){
+    .footer{
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 15px;
+    }
+}
+
+@media (max-width: 631px){
+    .menu_items{
+        display: none;
+    }
+    .menu_items_drop{
+        display: none;
+    }
+    .ham_menu{
+        display: inherit;
+    }
+    .ham_buscar{
+        position: absolute;
+        right: 70px;
+    }
+    .ham{
+        display: inherit;
+        position: absolute;
+        right: 15px;
+        top: 12px;
+    }
+    .ham_options{
+        display: flex;
+    }
+}
+
+@media (max-width: 471px){
+    .ham_buscar, .opciones{
+        display: none;
+    }
+    #titulo{
+        font-size: xx-large;
+    }
+}
+
+@media (max-width: 396px){
+    .footer div{
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 375px){
+    #titulo{
+        font-size: larger;
+        margin-top: 10px;
+    }
+    .footer div{
+        font-size: 12px;
     }
 }

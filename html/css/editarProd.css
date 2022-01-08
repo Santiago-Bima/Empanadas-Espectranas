@@ -89,3 +89,6 @@ form button{
 .tipos{
     margin: 10px;
 }
+.prop_inicio{
+    display: none;
+}

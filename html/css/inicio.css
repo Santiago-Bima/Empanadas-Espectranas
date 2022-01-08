@@ -7,31 +7,43 @@
 .menu_items button:hover{
     color: #bc70da;
 }
-.menu_drop{
+.menu_drop, .ham_menu_drop{
     background: none;
     border: none;
     font-weight: lighter;
     color: #ececec;
 }
-.menu_drop_js{
+.menu_drop_js, .ham_menu_drop_js{
     transition: transform .4s;
 }
-.menu_drop_js.activado{
+.menu_drop_js.activado, .ham_menu_drop_js.activado{
    transform: rotate(180deg);
+}
+.ham_menu_items_drop{
+    background: #2b2e32;
+    top: -157px;
+    width: 100vw;
+    display: none;
+    z-index: 9;
 }
 .menu_items_drop{
     background: #292c30;
-    position: absolute;
     top: -170px;
-    transition: transform .4s;
     left: 118px;
     padding: 15px;
+    z-index: 10;
+}
+.menu_items_drop, .ham_menu_items_drop{
+    position: absolute;
+    transition: transform .4s;
     border-bottom-right-radius: 7px;
     border-bottom-left-radius: 7px;
-    z-index: 10;
 }
 .menu_items_drop.activado{
     transform: translateY(290px);
+}
+.ham_menu_items_drop.activado{
+    transform: translateY(437px);
 }
 .menu__drop__items{
     display: block;
@@ -49,6 +61,12 @@
 .menu_items_drop a:first-child{
     padding-top: 0px;
 }
+.ham_menu_items_drop a:first-child{
+    padding-top: 10px;
+}
+.ham_menu_items_drop a:last-child{
+    padding-bottom: 15px;
+}
 .menu__prod{
     padding: 5px 0;
 }
@@ -57,7 +75,7 @@
 
 
 /* carrito */
-#carrito{
+#carrito, #ham_carrito{
     width: 25px;
     height: 25px;
     position: absolute;
@@ -67,14 +85,20 @@
     right: 275px;
     top: 20px;
 }
-#carrito:hover{
+#carrito:hover, #ham_carrito:hover{
     color: #bc70da
 }
+.ham_contenedor_carrito{
+    display: none;
+    top: -168px;
+}
 .contenedor_carrito{
-    height: 226px;
     display: inline;
-    position: absolute;
     top: -108px;
+}
+.contenedor_carrito, .ham_contenedor_carrito{
+    height: 226px;
+    position: absolute;
     transition: transform .4s;
     right: 190px;
     background: #2f3235;
@@ -84,11 +108,14 @@
     border-bottom-left-radius: 7px;
     z-index: 10;
 }
-.contenedor_carrito ul li{
+.contenedor_carrito ul li, .ham_contenedor_carrito ul li{
     list-style: none;
 }
 .contenedor_carrito.activado{
     transform: translateY(225px);
+}
+.ham_contenedor_carrito.activado{
+    transform: translateY(285px);
 }
 #compra_carrito, #borrar_carrito{
     border-radius: 5px;
@@ -215,4 +242,26 @@
 .footer{
     position: relative!important;
     bottom: 0;
+}
+
+
+
+@media (max-width: 631px){
+    #ham_carrito{
+        position: absolute;
+        right: 310px;
+    }
+    .ham_contenedor_carrito{
+        display: inherit;
+    }
+    .ham_menu_items_drop{
+        display: inherit;
+    }
+}
+
+
+@media (max-width: 471px){
+    #ham_carrito{
+        display: none;
+    }
 }
